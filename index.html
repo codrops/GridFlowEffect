@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Grid Flow Effect | Codrops</title>
+		<meta name="description" content="A loading and navigation animation where thumbnails flow into a grid." />
+		<meta name="keywords" content="gsap, flip animation, spin, grid animation, navigation, javascript" />
+		<meta name="author" content="Codrops" />
+		<link rel="stylesheet" href="https://use.typekit.net/lhf4blq.css">
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+		<script src="//tympanus.net/codrops/adpacks/analytics.js"></script>
+	</head>
+	<body>
+		<main>
+			<div class="frame">
+				<div class="frame__title">
+					<h1 class="frame__title-main">Grid Flow Nav</h1>
+					<a aria-label="Back to the article" class="frame__title-back" href="https://tympanus.net/codrops/?p=73018">
+						<span class="oh__inner">Back to the article</span> 
+						<svg width="18px" height="18px" viewBox="0 0 24 24">
+							<path vector-effect="non-scaling-stroke" d="M18.25 15.5a.75.75 0 00.75-.75v-9a.75.75 0 00-.75-.75h-9a.75.75 0 000 1.5h7.19L6.22 16.72a.75.75 0 101.06 1.06L17.5 7.56v7.19c0 .414.336.75.75.75z"></path>
+						</svg>
+					</a>
+				</div>
+				<a class="frame__prev" href="https://tympanus.net/Development/ScrollBasedLayoutAnimations/">Previous demo</a>
+			</div>
+			<div class="loader">
+				<div class="loader__img">
+					<!-- items from gallery 2, these will flip/animate into nav__item--next -->
+				</div>
+				<div class="loader__progress">
+					<span class="loader__progress-text">0</span>
+					<span class="loader__progress-symbol">%</span>
+				</div>
+			</div>
+			<nav class="nav">
+				<div class="nav__item nav__item--prev">
+					<!-- items of last gallery -->
+					<svg class="nav__item-arrow" width="37" height="94" viewBox="0 0 37 94">
+						<path vector-effect="non-scaling-stroke" d="M35.95.01 1.348 92.657l7.168-4.646"/>
+					</svg>
+				</div>
+				<div class="nav__item nav__item--next">
+					<!-- all items from loader flip here, initially gallery 2 -->
+					<svg class="nav__item-arrow" width="37" height="94" viewBox="0 0 37 94">
+						<path vector-effect="non-scaling-stroke" d="M1.348 93.657 35.95 1.01l-7.168 4.646"/>
+					</svg>
+				</div>
+			</nav>
+			<div class="gallery" id="gallery-1">
+				<!-- these will animate in initially -->
+				<div class="gallery__item" style="--row:1;--col:1;">
+					<div class="gallery__item-inner" style="background-image:url(img/1.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:2;--col:3;">
+					<div class="gallery__item-inner" style="background-image:url(img/2.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:1;--col:4;">
+					<div class="gallery__item-inner" style="background-image:url(img/3.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:3;--col:4;">
+					<div class="gallery__item-inner" style="background-image:url(img/4.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:3;--col:6;">
+					<div class="gallery__item-inner" style="background-image:url(img/5.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:1;--col:7;">
+					<div class="gallery__item-inner" style="background-image:url(img/6.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:1;--col:8;">
+					<div class="gallery__item-inner" style="background-image:url(img/7.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:3;--col:10;">
+					<div class="gallery__item-inner" style="background-image:url(img/8.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:2;--col:5;">
+					<div class="gallery__item-inner" style="background-image:url(img/9.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:4;--col:9;">
+					<div class="gallery__item-inner" style="background-image:url(img/10.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:3;--col:7;">
+					<div class="gallery__item-inner" style="background-image:url(img/11.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:4;--col:4;">
+					<div class="gallery__item-inner" style="background-image:url(img/12.jpg)"></div>
+				</div>
+			</div>
+			<div class="gallery" id="gallery-2">
+				<div class="gallery__item" style="--row:2;--col:1;">
+					<div class="gallery__item-inner" style="background-image:url(img/13.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:2;--col:3;">
+					<div class="gallery__item-inner" style="background-image:url(img/14.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:1;--col:4;">
+					<div class="gallery__item-inner" style="background-image:url(img/15.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:3;--col:4;">
+					<div class="gallery__item-inner" style="background-image:url(img/16.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:3;--col:6;">
+					<div class="gallery__item-inner" style="background-image:url(img/17.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:1;--col:7;">
+					<div class="gallery__item-inner" style="background-image:url(img/18.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:2;--col:8;">
+					<div class="gallery__item-inner" style="background-image:url(img/19.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:3;--col:10;">
+					<div class="gallery__item-inner" style="background-image:url(img/20.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:2;--col:5;">
+					<div class="gallery__item-inner" style="background-image:url(img/21.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:4;--col:9;">
+					<div class="gallery__item-inner" style="background-image:url(img/22.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:4;--col:7;">
+					<div class="gallery__item-inner" style="background-image:url(img/23.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:4;--col:4;">
+					<div class="gallery__item-inner" style="background-image:url(img/24.jpg)"></div>
+				</div>
+			</div>
+			<div class="gallery" id="gallery-3">
+				<div class="gallery__item" style="--row:1;--col:1;">
+					<div class="gallery__item-inner" style="background-image:url(img/25.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:2;--col:2;">
+					<div class="gallery__item-inner" style="background-image:url(img/26.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:1;--col:5;">
+					<div class="gallery__item-inner" style="background-image:url(img/27.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:2;--col:4;">
+					<div class="gallery__item-inner" style="background-image:url(img/28.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:3;--col:6;">
+					<div class="gallery__item-inner" style="background-image:url(img/29.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:1;--col:7;">
+					<div class="gallery__item-inner" style="background-image:url(img/30.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:1;--col:8;">
+					<div class="gallery__item-inner" style="background-image:url(img/31.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:3;--col:10;">
+					<div class="gallery__item-inner" style="background-image:url(img/32.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:2;--col:5;">
+					<div class="gallery__item-inner" style="background-image:url(img/33.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:4;--col:9;">
+					<div class="gallery__item-inner" style="background-image:url(img/34.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:4;--col:7;">
+					<div class="gallery__item-inner" style="background-image:url(img/35.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:3;--col:4;">
+					<div class="gallery__item-inner" style="background-image:url(img/36.jpg)"></div>
+				</div>
+			</div>
+			<div class="gallery" id="gallery-4">
+				<div class="gallery__item" style="--row:1;--col:1;">
+					<div class="gallery__item-inner" style="background-image:url(img/37.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:2;--col:3;">
+					<div class="gallery__item-inner" style="background-image:url(img/38.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:1;--col:4;">
+					<div class="gallery__item-inner" style="background-image:url(img/39.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:3;--col:2;">
+					<div class="gallery__item-inner" style="background-image:url(img/40.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:4;--col:6;">
+					<div class="gallery__item-inner" style="background-image:url(img/41.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:2;--col:7;">
+					<div class="gallery__item-inner" style="background-image:url(img/42.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:2;--col:10;">
+					<div class="gallery__item-inner" style="background-image:url(img/43.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:3;--col:10;">
+					<div class="gallery__item-inner" style="background-image:url(img/44.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:2;--col:5;">
+					<div class="gallery__item-inner" style="background-image:url(img/45.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:4;--col:9;">
+					<div class="gallery__item-inner" style="background-image:url(img/46.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:3;--col:7;">
+					<div class="gallery__item-inner" style="background-image:url(img/47.jpg)"></div>
+				</div>
+				<div class="gallery__item" style="--row:4;--col:4;">
+					<div class="gallery__item-inner" style="background-image:url(img/48.jpg)"></div>
+				</div>
+			</div>
+		</main>
+		<script src="https://tympanus.net/codrops/adpacks/cda_sponsor.js"></script>
+		<script src="js/gsap.min.js"></script>
+		<script src="js/Flip.min.js"></script>
+		<script src="js/imagesloaded.pkgd.min.js"></script>
+		<script type="module" src="js/index.js"></script>
+	</body>
+</html>
